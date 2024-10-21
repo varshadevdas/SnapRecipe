@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "686576933443",
+    "project_id": "snaprecipe-8c555",
+    "storage_bucket": "snaprecipe-8c555.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686576933443:android:18053bc1fda6c45f0d52f6",
+        "android_client_info": {
+          "package_name": "com.example.snaprecipe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFKY4lcQBH6CTQI522x14KkcZUrDZDTUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
