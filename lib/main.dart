@@ -1,30 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'login.dart'; // Import login page
+import 'screens/homepage.dart';
+import 'screens/image_capture.dart';
+import 'screens/landing.dart';
+import 'screens/login.dart';
+import 'screens/recipe.dart';
 
 void main() async {
-  WidgetsFlutterBinding
-      .ensureInitialized(); // Ensure Flutter widgets are initialized
-  await Firebase
-      .initializeApp(); // Ensure Firebase is initialized before running the app
-
-  runApp(MyApp()); // Run the app
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
-
-/*class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false, // Remove debug banner
-      title: 'SnapRecipe',
-      theme: ThemeData(
-        primarySwatch: Colors.blue, // Set primary color theme
-      ),
-      home: RecipePage(), // Use RecipePage as the home screen
-    );
-  }
-}*/
 
 class MyApp extends StatelessWidget {
   @override
@@ -34,13 +21,24 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/landing', // Set the initial route to landing page
+      initialRoute: '/landing', // Set initial route to Landing Page
       routes: {
-        '/landing': (context) => LandingPage(), // Define the landing page route
-        '/login': (context) => LoginScreen(), // Define the login page route
-        '/image_capture': (context) =>
-            ImageCaptureScreen(), // Define the image capture page route
+        '/landing': (context) => LandingScreen(), // Landing page route
+        '/login': (context) => LoginScreen(), // Login page route
+        '/homepage': (context) => HomePage(),
+        '/image_capture': (context) => ImageCapture(
+              onImageUploaded: (url) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RecipePage(),
+                  ),
+                );
+              },
+            ), // Pass URL to Recipe Page upon upload
+        '/recipe': (context) => RecipePage(), // Recipe page route
       },
+      home: LandingScreen(), // Start with Landing Screen
     );
   }
 }
